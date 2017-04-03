@@ -1,9 +1,14 @@
 package com.novacom.filters;
 
+import com.novacom.dao.Connector;
+import com.novacom.dao.Dao;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
+import java.beans.Statement;
 import java.io.IOException;
+import java.sql.*;
 
 /**
  * Created by A.Sivakon on 27.01.2017.
@@ -45,6 +50,11 @@ public class CountFilter implements Filter {
             a = mainCount;
             System.out.println ("You entered a main servlet for a " + mainCount + " time");
         }
+
+        Dao dao = new Dao();
+        dao.ExQuery();
+
+
         chain.doFilter(req, resp);
 
     }

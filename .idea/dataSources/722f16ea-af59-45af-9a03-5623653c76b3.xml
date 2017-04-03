@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="testdb@localhost">
+  <database-model serializer="dbm" rdbms="POSTGRES" format-version="4.0">
+    <root id="1"/>
+    <database id="2" parent="1" name="testdb">
+      <ObjectId>16393</ObjectId>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </database>
+    <schema id="3" parent="2" name="public">
+      <ObjectId>2200</ObjectId>
+      <IntrospectionTimestamp>2017-04-03.14:29:43.884</IntrospectionTimestamp>
+      <IntrospectionStateNumber>714</IntrospectionStateNumber>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="4" parent="2" name="pg_catalog">
+      <ObjectId>11</ObjectId>
+    </schema>
+    <schema id="5" parent="2" name="pg_toast">
+      <ObjectId>99</ObjectId>
+    </schema>
+    <schema id="6" parent="2" name="pg_temp_1">
+      <ObjectId>11215</ObjectId>
+    </schema>
+    <schema id="7" parent="2" name="pg_toast_temp_1">
+      <ObjectId>11216</ObjectId>
+    </schema>
+    <schema id="8" parent="2" name="information_schema">
+      <ObjectId>11480</ObjectId>
+    </schema>
+    <sequence id="9" parent="3" name="c_m_id_o_id_seq">
+      <ObjectId>16502</ObjectId>
+      <StateNumber>713</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="10" parent="3" name="clients_c_id_seq">
+      <ObjectId>16454</ObjectId>
+      <StateNumber>706</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="11" parent="3" name="merch_m_id_seq">
+      <ObjectId>16462</ObjectId>
+      <StateNumber>707</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <table id="12" parent="3" name="c_m_id">
+      <ObjectId>16470</ObjectId>
+      <StateNumber>713</StateNumber>
+    </table>
+    <table id="13" parent="3" name="clients">
+      <ObjectId>16456</ObjectId>
+      <StateNumber>709</StateNumber>
+    </table>
+    <table id="14" parent="3" name="merch">
+      <ObjectId>16464</ObjectId>
+      <StateNumber>709</StateNumber>
+    </table>
+    <column id="15" parent="12" name="c_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>708</StateNumber>
+    </column>
+    <column id="16" parent="12" name="m_id">
+      <Position>2</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>708</StateNumber>
+    </column>
+    <column id="17" parent="12" name="o_id">
+      <Position>3</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>713</StateNumber>
+      <DefaultExpression>nextval(&apos;c_m_id_o_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <index id="18" parent="12" name="o_id">
+      <ObjectId>16508</ObjectId>
+      <ColNames>o_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="19" parent="12" name="o_id">
+      <ObjectId>16509</ObjectId>
+      <ColNames>o_id</ColNames>
+      <UnderlyingIndexName>o_id</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="20" parent="12" name="c_id">
+      <ObjectId>16473</ObjectId>
+      <ColNames>c_id</ColNames>
+      <RefTableName>clients</RefTableName>
+      <RefKeyName>c_id</RefKeyName>
+      <RefColNames>c_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="21" parent="12" name="m_id">
+      <ObjectId>16478</ObjectId>
+      <ColNames>m_id</ColNames>
+      <RefTableName>merch</RefTableName>
+      <RefKeyName>m_id</RefKeyName>
+      <RefColNames>m_id</RefColNames>
+    </foreign-key>
+    <column id="22" parent="13" name="c_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>706</StateNumber>
+      <DefaultExpression>nextval(&apos;clients_c_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="23" parent="13" name="c_name">
+      <Position>2</Position>
+      <DataType>char(30)|0</DataType>
+      <StateNumber>706</StateNumber>
+    </column>
+    <index id="24" parent="13" name="c_id">
+      <ObjectId>16460</ObjectId>
+      <ColNames>c_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="25" parent="13" name="c_id">
+      <ObjectId>16461</ObjectId>
+      <ColNames>c_id</ColNames>
+      <UnderlyingIndexName>c_id</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="26" parent="14" name="m_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>707</StateNumber>
+      <DefaultExpression>nextval(&apos;merch_m_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="27" parent="14" name="m_name">
+      <Position>2</Position>
+      <DataType>char(30)|0</DataType>
+      <StateNumber>707</StateNumber>
+    </column>
+    <index id="28" parent="14" name="m_id">
+      <ObjectId>16468</ObjectId>
+      <ColNames>m_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="29" parent="14" name="m_id">
+      <ObjectId>16469</ObjectId>
+      <ColNames>m_id</ColNames>
+      <UnderlyingIndexName>m_id</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>

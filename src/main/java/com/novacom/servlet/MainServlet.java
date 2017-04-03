@@ -1,5 +1,7 @@
 package com.novacom.servlet;
 
+import com.novacom.dao.Dao;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,7 +39,11 @@ public class MainServlet extends HttpServlet{
         out.println("<h1>Hello Page</h1>");
         out.println("</center>");
         out.println("<h1>Hello " + nameParam + ", you are age of " + ageParam + "</h1>");
+
+
     }
+
+
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
