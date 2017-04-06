@@ -7,12 +7,10 @@ import java.sql.*;
  */
 public class ConnectionFactory {
 
-    private final String HOST = "jdbc:postgresql://localhost:5432/testdb";
-    private final String USERNAME = "postgres";
-    private final String PASSWORD = "root";
-    Connection connection;
+    //Block singleton-------------------------------------------
+    private static ConnectionFactory uniqueInstance = new ConnectionFactory();
 
-    public ConnectionFactory(){
+    private ConnectionFactory(){
 
         try {
             Class.forName("org.postgresql.Driver");
@@ -21,8 +19,18 @@ public class ConnectionFactory {
             e.printStackTrace();
             return;
         }
-
     }
+
+    public static ConnectionFactory getUniqueInstance() {
+        return uniqueInstance;
+    }
+    //----------------------------------------------------------
+
+    private final String HOST = "jdbc:postgresql://localhost:5432/testdb";
+    private final String USERNAME = "postgres";
+    private final String PASSWORD = "root";
+    Connection connection;
+
 
     public Connection getConnection() {
         try{

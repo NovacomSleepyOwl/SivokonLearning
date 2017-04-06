@@ -12,21 +12,13 @@ public class Dao {
     private static Dao uniqueInstance = new Dao();
 
     private Dao(){
-        connection = new ConnectionFactory();
+        connection = ConnectionFactory.getUniqueInstance();
     }
 
     public static Dao getUniqueInstance() {
         return uniqueInstance;
     }
     //----------------------------------------------------------
-
-    //Factory method------------------------------------------
-    private ConnectionFactory getConnectionFactory(){
-        return connection;
-    }
-    //----------------------------------------------------------
-
-
 
 
     //Custom query (return first client from database)
