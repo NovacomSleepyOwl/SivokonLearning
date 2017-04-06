@@ -25,16 +25,19 @@ public class Dao {
     public void ExQuery(){
 
         String query = "SELECT c_name FROM clients WHERE c_id = 1";
-
-        try(Statement statement = connection.getConnection().createStatement()){
-            ResultSet resultSet = statement.executeQuery(query);
-            while (resultSet.next()) {
-                String cname = resultSet.getString(1);
-                System.out.println("Cname = :" + cname);
-            }
+        CPDS cpds = new CPDS();
+        cpds.GetComboPooledDataSource();
+        //try(Statement statement = connection.getConnection().createStatement()){
+        try(Statement statement = cpds.getC3P0Connection().createStatement()){
+                ResultSet resultSet = statement.executeQuery(query);
+                while (resultSet.next()) {
+                    String cname = resultSet.getString(1);
+                    System.out.println("Cname = :" + cname);
+                }
         }catch(SQLException e){
-            e.printStackTrace();
+                e.printStackTrace();
         }
+
 
     }
 
