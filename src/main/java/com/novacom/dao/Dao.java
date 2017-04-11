@@ -6,7 +6,7 @@ import java.sql.*;
  * Created by A.Sivakon on 03.04.2017.
  */
 public class Dao {
-    ConnectionFactory connection;
+    private ConnectionFactory connection;
 
     //Block singleton-------------------------------------------
     private static Dao uniqueInstance = new Dao();
@@ -22,13 +22,10 @@ public class Dao {
 
 
     //Custom query (return first client from database)
-    public void ExQuery(){
+    public void exQuery(){
 
         String query = "SELECT c_name FROM clients WHERE c_id = 1";
-        CPDS cpds = new CPDS();
-        cpds.GetComboPooledDataSource();
-        //try(Statement statement = connection.getConnection().createStatement()){
-        try(Statement statement = cpds.getC3P0Connection().createStatement()){
+        try(Statement statement = connection.getConnection().createStatement()){
                 ResultSet resultSet = statement.executeQuery(query);
                 while (resultSet.next()) {
                     String cname = resultSet.getString(1);

@@ -1,14 +1,11 @@
 package com.novacom.filters;
 
-import com.novacom.dao.Connector;
 import com.novacom.dao.Dao;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
-import java.beans.Statement;
 import java.io.IOException;
-import java.sql.*;
 
 /**
  * Created by A.Sivakon on 27.01.2017.
@@ -16,12 +13,13 @@ import java.sql.*;
 @WebFilter(urlPatterns = "/*")
 public class CountFilter implements Filter {
 
-    int a = 0;
-    int headerCount = 0;
-    int mainCount = 0;
-    int bodyCount = 0;
+    //Counter (old code)-------------------------------------------------------------------------------
+    private int a = 0;
+    private int headerCount = 0;
+    private int mainCount = 0;
+    private int bodyCount = 0;
 
-    FilterConfig filterConfig = null;
+    private FilterConfig filterConfig = null;
 
     public void init(FilterConfig config) throws ServletException {
         this.filterConfig = config;
@@ -50,14 +48,17 @@ public class CountFilter implements Filter {
             a = mainCount;
             System.out.println ("You entered a main servlet for a " + mainCount + " time");
         }
+        //-----------------------------------------------------------------------------------
 
-        Dao dao = new Dao();
-        dao.ExQuery();
-
+        //Dao query execute------------------------------------------------------------------
+        Dao dao = Dao.getUniqueInstance();
+        dao.exQuery();
 
         chain.doFilter(req, resp);
-
+        //-----------------------------------------------------------------------------------
     }
+
+
 
     public void destroy() {
         this.filterConfig = null;
