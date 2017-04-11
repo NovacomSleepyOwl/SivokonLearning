@@ -35,7 +35,6 @@ public class ConnectionFactory {
     private final String USERNAME = "postgres";
     private final String PASSWORD = "root";
     private final String DRIVER_CLASS = "org.postgresql.Driver";
-    private Connection connection;
     private ComboPooledDataSource cpds;
 
 
@@ -70,12 +69,14 @@ public class ConnectionFactory {
     //--------------------------------------------------------------------------------
 
     public Connection getConnection() {
+
         try{
-            connection = cpds.getConnection();
+            return cpds.getConnection();
         }catch (SQLException e){
             e.printStackTrace();
         }
-        return connection;
+        return null;
     }
+
 
 }

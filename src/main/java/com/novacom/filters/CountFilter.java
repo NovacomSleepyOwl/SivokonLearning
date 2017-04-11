@@ -52,7 +52,7 @@ public class CountFilter implements Filter {
 
         //Dao query execute------------------------------------------------------------------
         Dao dao = Dao.getUniqueInstance();
-        dao.exQuery();
+        dao.exCustomQuery();
 
         chain.doFilter(req, resp);
         //-----------------------------------------------------------------------------------

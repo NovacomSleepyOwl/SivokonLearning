@@ -9,7 +9,7 @@ public class Dao {
     private ConnectionFactory connection;
 
     //Block singleton-------------------------------------------
-    private static Dao uniqueInstance = new Dao();
+    private final static Dao uniqueInstance = new Dao();
 
     private Dao(){
         connection = ConnectionFactory.getUniqueInstance();
@@ -22,10 +22,11 @@ public class Dao {
 
 
     //Custom query (return first client from database)
-    public void exQuery(){
+    public void exCustomQuery(){
 
         String query = "SELECT c_name FROM clients WHERE c_id = 1";
-        try(Statement statement = connection.getConnection().createStatement()){
+        try(Connection c = connection.getConnection()){
+            Statement statement = c.createStatement();
                 ResultSet resultSet = statement.executeQuery(query);
                 while (resultSet.next()) {
                     String cname = resultSet.getString(1);
